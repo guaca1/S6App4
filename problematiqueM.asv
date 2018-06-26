@@ -10,5 +10,4 @@ Pmoy = sum(SortieCapteur(:,2).^2)/length(SortieCapteur);
 dS = sqrt(Pmoy*12/10^2.25);
 niveau = 24/dS;
 
-histogram(ADCOut);
-
+histogram(
