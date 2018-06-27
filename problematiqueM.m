@@ -15,19 +15,23 @@ N = ceil(log2(niveau))
 
 %lecture des fichiers audio
 y=audioplayer(AudioOut/max(AudioOut), 16000);
-%histogram(ADCOut);
+
 yanal = audioplayer(AudioOutAnal/max(AudioOutAnal), 16000)
 PmoyCanalAnal = sum((entreeCanalAnal(1:64000)).^2)/length(entreeCanalAnal(1:64000));
+
+%histogram
 figure
 hold on
+set(gca, 'YScale', 'log')
 title('Histogramme du signal envoyé par le capteur')
 ylabel({'Nombre de valeur','(dB)'})
 xlabel('Valeur')
-histogram(SortieCapteur)
+histogram(SortieCapteur(:,2))
 figure 
 hold on
+set(gca, 'YScale', 'log')
 title('Histogramme du signal après le companding')
 ylabel({'Nombre de valeur','(dB)'})
 xlabel('Valeur')
-histogram(AudioOut)
+histogram(AudioOut(1:64000))
 %10*log10(sum(signalAnal(1:64000).^2)/sum(bruitAnal(1:64000).^2))
